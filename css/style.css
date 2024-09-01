@@ -1,0 +1,374 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Header */
+.main-header {
+    background-color: #4CAF50; /* لون الشعار */
+    color: #fff;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo img {
+    max-width: 150px;
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.main-nav li {
+    margin: 0 15px;
+}
+
+.main-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.main-nav a:hover {
+    text-decoration: underline;
+}
+
+/* Intro Container */
+.intro-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px 0;
+    background-color: #f4f4f4;
+}
+
+.image-and-text {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.project-image {
+    padding: 10px;
+    max-width: 300px;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.intro-text h1 {
+    font-size: 36px;
+    color: #4CAF50; /* لون الشعار */
+    margin: 0;
+}
+
+.intro-text p {
+    font-size: 18px;
+    color: #555;
+}
+
+.button-container {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn {
+    background-color: #4CAF50; /* لون الشعار */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+}
+
+.btn i {
+    margin-right: 8px;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+/* About Section */
+.about-section {
+    padding: 50px 0;
+    background-color: #fff;
+    text-align: center;
+}
+
+.about-section h2 {
+    font-size: 32px;
+    color: #4CAF50; /* لون الشعار */
+    margin-bottom: 20px;
+}
+
+.about-section p {
+    font-size: 18px;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Services Section */
+.services-section {
+    padding: 50px 0;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.services-section h2 {
+    font-size: 32px;
+    color: #4CAF50; /* لون الشعار */
+    margin-bottom: 20px;
+}
+
+.services-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.service-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    min-width: 250px;
+    margin: 10px;
+}
+
+.service-item i {
+    font-size: 40px;
+    color: #4CAF50; /* لون الشعار */
+    margin-bottom: 15px;
+}
+
+.service-item h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.service-item p {
+    font-size: 16px;
+    color: #777;
+}
+
+/* Contact Section */
+.contact-section {
+    padding: 50px 0;
+    background-color: #fff;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 32px;
+    color: #4CAF50; /* لون الشعار */
+    margin-bottom: 20px;
+}
+
+.contact-section p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: right;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.submit-btn {
+    background-color: #4CAF50; /* لون الشعار */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+}
+
+/* Footer Section */
+.footer-section {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-links {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-social a {
+    color: #fff;
+    margin: 0 10px;
+    font-size: 20px;
+}
+
+.footer-bottom {
+    margin-top: 10px;
+}
+       .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 60px); /* ناقص ارتفاع الـ Header والـ Footer */
+            padding: 20px;
+        }
+
+        .login-form {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .login-form h2 {
+            font-size: 24px;
+            color: #4CAF50; /* لون الشعار */
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .login-form .form-group {
+            margin-bottom: 15px;
+        }
+
+        .login-form .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .login-form .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .login-form .btn {
+            background-color: #4CAF50; /* لون الشعار */
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .login-form .btn:hover {
+            background-color: #45a049;
+        }
+
+        .login-form .links {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .login-form .links a {
+            color: #4CAF50; /* لون الشعار */
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .login-form .links a:hover {
+            text-decoration: underline;
+        }
+
+        .image-container {
+            max-width: 500px;
+            width: 100%;
+            margin-left: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeInRight 0.5s ease-in-out;
+
+        }
+
+        .image-container img {
+            height: 360px;
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .image-container {
+                margin-left: 0;
+                margin-bottom: 20px;
+            }
+        }
+
