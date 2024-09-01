@@ -372,3 +372,49 @@ body {
             }
         }
 
+        .registration-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            text-align: center;
+        }
+
+        .registration-container h2 {
+            margin-bottom: 20px;
+            color: #333333;
+        }
+
+        .registration-container label {
+            display: block;
+            margin-bottom: 8px;
+            text-align: right;
+            font-size: 14px;
+            color: #555555;
+        }
+
+        .registration-container input,
+        .registration-container select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .registration-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .registration-container button:hover {
+            background-color: #45a049;
+        }

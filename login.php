@@ -14,7 +14,7 @@
             background-color: #f4f4f4;
         }
 
- 
+
     </style>
 </head>
 <body>
@@ -41,8 +41,8 @@ include 'header.php';
             </div>
             <button type="submit" class="btn">تسجيل الدخول</button>
             <div class="links">
-                <a href="offers.php">إنشاء حساب جديد</a> | 
-                <a href="forgot-password.html">نسيت كلمة المرور؟</a>
+                <a href="offers.php">إنشاء حساب جديد</a> |
+                <a href="registration.php">نسيت كلمة المرور؟</a>
             </div>
         </form>
     </div>
