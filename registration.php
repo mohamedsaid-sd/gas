@@ -13,11 +13,54 @@
   <?php
   // Include Header
   include 'header.php';
+
+
+  include 'config.php';
+
+// Add new customer
+if(isset($_POST['add_customer'])){
+
+
+ 
+
+
+    $name    = $_POST['name'];
+    $phone   = $_POST['phone'];
+    $gender  = $_POST['gender'];
+    $email = $_POST['email'];
+    $password   = $_POST['password'];
+ 
+
+$duplicate=mysqli_query($con,"select * from customers where name='$name'");
+
+if (mysqli_num_rows($duplicate)>0)
+{
+        echo "<div id='alert_good'>هذا الاسم موجود بالفعل</div>";
+}else{
+
+
+
+    $add_customer_query = mysqli_query( $con ," INSERT INTO `customers` (`id`, `name`, `phone`, `gander`, `email` , `password`) VALUES (NULL, '$name', '$phone', '$gender',  '$email', '$password'); ");
+ 
+
+
+
+
+
+        if($add_customer_query){
+        echo "<div id='alert_good'>تمت اضافه المستخدم بنجاح</div>";
+        }else{
+        echo "خطأ في عملية الاضافة";
+        }
+    
+}
+}
+
   ?>
    <center>
     <div class="registration-container">
         <h2>تسجيل حساب عميل</h2>
-        <form action="/submit-form" method="POST">
+        <form action="registration.php" method="POST">
             <label for="name">الاسم:</label>
             <input type="text" id="name" name="name" required>
 
@@ -28,7 +71,6 @@
             <select id="gender" name="gender" required>
                 <option value="male">ذكر</option>
                 <option value="female">أنثى</option>
-                <option value="other">آخر</option>
             </select>
 
             <label for="email">البريد الإلكتروني:</label>
@@ -40,7 +82,7 @@
             <label for="confirm-password">تأكيد كلمة السر:</label>
             <input type="password" id="confirm-password" name="confirm-password" required>
 
-            <button type="submit">تسجيل</button>
+            <button type="submit" name="add_customer" >تسجيل</button>
         </form>
     </div>
   </center>

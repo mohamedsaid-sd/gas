@@ -22,6 +22,36 @@
 <?php
 // Include Header
 include 'header.php';
+include 'config.php';
+
+
+ if(isset($_POST['login'])){
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        $flag = false;
+        $query = mysqli_query($con, "SELECT * FROM `customers`");
+        while ($row = mysqli_fetch_array($query)) {
+            if($email == $row['email'] && $password == $row['password']){
+                $flag = true;
+              
+            }
+        }
+
+                                $redirectUrl = "offers.php";
+
+
+        if($flag){
+           
+
+                echo "<div class='alert alert-success'>تم تسجيل الدخول بنجاح... ";
+                echo "<meta http-equiv='refresh' content='3;url={$redirectUrl}'>";
+            }
+         else {
+            echo "<div class='alert alert-danger'>خطأ في بيانات الدخول.</div>";
+        }
+    }
+    
 ?>
 
 <div class="login-container">
@@ -30,16 +60,16 @@ include 'header.php';
     </div>
     <div class="login-form">
         <h2>تسجيل الدخول كعميل</h2>
-        <form action="#" method="post">
+        <form action="login.php" method="post" >
             <div class="form-group">
                 <label for="username">البريد الإلكتروني أو اسم المستخدم:</label>
-                <input type="text" id="username" name="username" required>
+                <input type="text" id="email" name="email" required>
             </div>
             <div class="form-group">
                 <label for="password">كلمة المرور:</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit" class="btn">تسجيل الدخول</button>
+            <button type="submit" class="btn" name="login">تسجيل الدخول</button>
             <div class="links">
                 <a href="offers.php">إنشاء حساب جديد</a> |
                 <a href="registration.php">نسيت كلمة المرور؟</a>

@@ -41,20 +41,87 @@ input[type=checkbox]{
   <?php
   // Include Header
   include 'header.php';
+
+    include 'config.php';
+
+// Add new customer
+if(isset($_POST['add_shope'])){
+
+
+ 
+
+
+    $shop_name    = $_POST['shop_name'];
+    $phone  = $_POST['phone'];
+    $location = $_POST['location'];
+    $address   = $_POST['address'];
+
+    $password   = $_POST['password'];
+    $agb   = $_POST['agb'];
+    $total   = $_POST['total'];
+    $aman   = $_POST['aman'];
+    $alnail   = $_POST['alnail'];
+    $gadra   = $_POST['gadra'];
+    $alwdania   = $_POST['alwdania'];
+    $soda   = $_POST['soda'];
+    $iran   = $_POST['iran'];
+
+
+ 
+
+$duplicate=mysqli_query($con,"select * from shops where shop_name='$shop_name'");
+
+if (mysqli_num_rows($duplicate)>0)
+{
+        echo "<div id='alert_good'>هذا المحل موجود</div>";
+}else{
+
+
+$file = $_FILES['file'];
+    $file_tmp = $_FILES['file']['tmp_name'];
+    $file_name = $_FILES['file']['name'];
+    $image_name = "images/". "IMG".date("h.i.s").".jpg";
+
+    $add_shops_query = mysqli_query( $con ," INSERT INTO `shops` (`id`, `shop_name`, `shop_image`, `phone`, `location`, `address`, `password`, `agb`, `total`, `aman`, `alnail`, `gadra`, `alwdania`, `soda`, `iran`) VALUES (NULL, '$shop_name', '$image_name', '$phone',  '$location', '$address', '$password', '$agb', '$total', '$aman', '$alnail', '$gadra', '$alwdania', '$soda', '$iran'); ");
+ 
+    move_uploaded_file($file_tmp, $image_name );
+
+
+
+
+
+
+        if($add_shops_query){
+        echo "<div id='alert_good'>تم اضافه المحل بنجاح</div>";
+        }else{
+        echo "خطأ في عملية الاضافة";
+        }
+    
+}
+}
   ?>
 <center>
 
     <div class="registration-container">
         <h2>تسجيل محل غاز جديد</h2>
-        <form action="/submit-gas-shop" method="POST" enctype="multipart/form-data">
-            <label for="shop-name">اسم المحل:</label>
-            <input type="text" id="shop-name" name="shop-name" required>
+        <form action="gas-registration.php" method="POST" enctype="multipart/form-data">
+            <label for="shop_name">اسم المحل:</label>
+            <input type="text" id="shop_name" name="shop_name" required>
 
-            <label for="shop-image">صورة المحل:</label>
-            <input type="file" id="shop-image" name="shop-image" accept="image/*" required>
+            <label for="shop_image">صورة المحل:</label>
+            <input type="file" id="file" name="file" accept="image/*" required>
 
             <label for="phone">رقم الهاتف:</label>
             <input type="tel" id="phone" name="phone" required>
+
+
+              <label for="location">المنطقه :</label>
+            <select id="location" name="location" required>
+                <option value="الخرطوم">الخرطوم</option>
+                <option value="بحري">بحري</option>
+                <option value="امدرمان">امدرمان</option>
+
+            </select>
 
             <label for="address">العنوان:</label>
             <input type="text" id="address" name="address" required>
@@ -71,32 +138,73 @@ input[type=checkbox]{
 
 
     <div class="col-6">
-    <label class="checkbox-container"><input type="checkbox" name="cylinders" value="اجب"/> اجب </label>
+
+        <label for="agb">اجب :</label>
+            <select id="agb" name="agb" required>
+                <option value="1">متوفرة</option>
+                <option value="0">غير متوفرة</option>
+            </select>
+
+
     </div>
     <div class="col-6">
-        <label class="checkbox-container"><input type="checkbox" name="cylinders" value="توتال"> توتال</label>
+            <label for="total">توتال :</label>
+            <select id="total" name="total" required>
+                <option value="1">متوفرة</option>
+                <option value="0">غير متوفرة</option>
+            </select>
     </div>
     <div class="col-6">
-        <label class="checkbox-container"><input type="checkbox" name="cylinders" value="امان"> امان</label>
+
+             <label for="aman">امام :</label>
+            <select id="aman" name="aman" required>
+                <option value="1">متوفرة</option>
+                <option value="0">غير متوفرة</option>
+            </select>
     </div>
     <div class="col-6">
-        <label class="checkbox-container"><input type="checkbox" name="cylinders" value="النيل"> النيل</label>
+
+            <label for="alnail">النيل :</label>
+            <select id="alnail" name="alnail" required>
+                <option value="1">متوفرة</option>
+                <option value="0">غير متوفرة</option>
+            </select>
     </div>
     <div class="col-6">
-        <label class="checkbox-container"><input type="checkbox" name="cylinders" value="قادرة"> قادرة</label>
+
+            <label for="gadra">قادرة :</label>
+            <select id="gadra" name="gadra" required>
+                <option value="1">متوفرة</option>
+                <option value="0">غير متوفرة</option>
+            </select>
     </div>
     <div class="col-6">
-        <label class="checkbox-container"><input type="checkbox" name="cylinders" value="الوطنية"> الوطنية</label>
+
+          <label for="alwdania">الوطنية :</label>
+            <select id="alwdania" name="alwdania" required>
+                <option value="1">متوفرة</option>
+                <option value="0">غير متوفرة</option>
+            </select>
     </div>
     <div class="col-6">
-        <label class="checkbox-container"><input type="checkbox" name="cylinders" value="سودا"> سودا</label>
+
+        <label for="soda">سودة :</label>
+            <select id="soda" name="soda" required>
+                <option value="1">متوفرة</option>
+                <option value="0">غير متوفرة</option>
+            </select>
     </div>
     <div class="col-6">
-        <label class="checkbox-container"><input type="checkbox" name="cylinders" value="ايران">ايران</label>
+
+        <label for="iran">ايران :</label>
+            <select id="iran" name="iran" required>
+                <option value="1">متوفرة</option>
+                <option value="0">غير متوفرة</option>
+            </select>
     </div>
 </div>
 
-            <button type="submit">تسجيل</button>
+            <button type="submit" name="add_shope" >تسجيل</button>
         </form>
     </div>
 

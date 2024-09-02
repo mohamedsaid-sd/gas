@@ -41,8 +41,8 @@ include 'header.php';
             </div>
             <button type="submit" class="btn">تسجيل الدخول</button>
             <div class="links">
-                <a href="register.html">إنشاء حساب جديد</a> | 
-                <a href="forgot-password.html">نسيت كلمة المرور؟</a>
+                <a href="gas-registration.php">إنشاء حساب جديد</a> | 
+                <a href="offers.php">نسيت كلمة المرور؟</a>
             </div>
         </form>
     </div>

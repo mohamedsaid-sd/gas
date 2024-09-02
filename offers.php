@@ -156,7 +156,10 @@
 
 <div class="offers-container">
     <div class="search-filter">
+
         <input type="text" placeholder="ابحث عن المحلات...">
+       <button type="submit" name="search" >بحث</button>
+
         <select>
             <option value="">كل المناطق</option>
             <option value="area1"> الخرطوم </option>
@@ -165,191 +168,162 @@
         </select>
     </div>
 
-    <div class="offers-grid">
+
+   <div class="offers-grid">
+    <?php 
+
+    include 'config.php';
+
+
+        
+        
+
+
+        
+     
+        
+        // get all  data
+        $select = mysqli_query( $con , "SELECT * FROM `shops`");
+
+        
+        // loop data to get valuse
+        while ($row = mysqli_fetch_array($select)) {
+
+
+        ?>
+
+ 
+
         <!-- Offer Card 1 -->
         <div class="offer-card">
-            <img src="images/store1.jpg" alt="Store 1">
-            <h3>محل الغاز 1</h3>
+            <img src="<?php echo $row['shop_image']; ?>" alt="Store 1">
+            <h3><?php echo $row['shop_name']; ?></h3>
             <div class="contact-info">
-                <p class="phone"><i class="fas fa-phone-alt"></i> 123-456-7890</p>
-                <p class="address"><i class="fas fa-map-marker-alt"></i> شارع 123، المدينة</p>
+                <p class="phone"><i class="fas fa-phone-alt"></i><?php echo $row['phone']; ?></p>
+                <p class="address"><i class="fas fa-map-marker-alt"></i><?php echo $row['address']; ?></p>
             </div>
+
+
+
             <div class="availability">
                 <h4>أنابيب الغاز المتوفرة:</h4>
                 <div class="availability-status">
-                    <div class="status-item"><span>توتال</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>اجب</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>امان</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>ايران</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>النيل</span> <i class="fas fa-times-circle offline"></i></div>
-                    <div class="status-item"><span>قادرة</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>الوطنية</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>سودا</span> <i class="fas fa-check-circle"></i></div>
+
+                     <?php 
+
+                   
+                        if($row['agb']=="1"){
+                            echo "  <div class='status-item'><span>اجب</span> <i class='fas fa-check-circle'></i></div>";
+                        }else{
+                            echo "<div class='status-item'><span>اجب</span> <i class='fas fa-times-circle offline'></i></div>";
+                        }
+
+
+
+                        if($row['total']=="1"){
+                            echo "  <div class='status-item'><span></span>توتال <i class='fas fa-check-circle'></i></div>";
+                        }else{
+                            echo "<div class='status-item'><span>توتال</span> <i class='fas fa-times-circle offline'></i></div>";
+                        }
+
+
+
+                         if($row['aman']=="1"){
+                            echo "  <div class='status-item'><span>امان</span> <i class='fas fa-check-circle'></i></div>";
+                        }else{
+                            echo "<div class='status-item'><span>امان</span> <i class='fas fa-times-circle offline'></i></div>";
+                        }
+
+
+                         if($row['alnail']=="1"){
+                            echo "  <div class='status-item'><span>النيل</span> <i class='fas fa-check-circle'></i></div>";
+                        }else{
+                            echo "<div class='status-item'><span>النيل</span> <i class='fas fa-times-circle offline'></i></div>";
+                        }
+
+
+                             if($row['gadra']=="1"){
+                            echo "  <div class='status-item'><span>قادرة</span> <i class='fas fa-check-circle'></i></div>";
+                        }else{
+                            echo "<div class='status-item'><span>قادرة</span> <i class='fas fa-times-circle offline'></i></div>";
+                        }
+
+
+                             if($row['alwdania']=="1"){
+                            echo "  <div class='status-item'><span>الوطنية</span> <i class='fas fa-check-circle'></i></div>";
+                        }else{
+                            echo "<div class='status-item'><span>الوطنية</span> <i class='fas fa-times-circle offline'></i></div>";
+                        }
+
+
+                            if($row['soda']=="1"){
+                            echo "  <div class='status-item'><span>سودا</span> <i class='fas fa-check-circle'></i></div>";
+                        }else{
+                            echo "<div class='status-item'><span>سودا</span> <i class='fas fa-times-circle offline'></i></div>";
+                        }
+
+
+
+                            if($row['iran']=="1"){
+                            echo "  <div class='status-item'><span>النيل</span> <i class='fas fa-check-circle'></i></div>";
+                        }else{
+                            echo "<div class='status-item'><span>النيل</span> <i class='fas fa-times-circle offline'></i></div>";
+                        }
+
+
+
+
+
+
+
+
+                    // <div class="status-item"><span></span> <i class="fas fa-check-circle"></i></div>
+                    // <div class="status-item"><span>توتال</span><i class="fas fa-times-circle offline"></i></div>
+
+
+                  
+                  
+
+                    // <div class="status-item"><span></span> <i class="fas fa-check-circle"></i></div>
+                    // <div class="status-item"><span>امان</span> <i class="fas fa-times-circle offline"></i></div>
+
+
+                    // <div class="status-item"><span>ايران</span> <i class="fas fa-check-circle"></i></div>
+                    // <div class="status-item"><span>ايران</span> <i class="fas fa-times-circle offline"></i></div>
+
+                    // <div class="status-item"><span></span> <i class="fas fa-times-circle offline"></i></div>
+                    // <div class="status-item"><span></span><i class="fas fa-times-circle offline"></i></div>
+
+                    // <div class="status-item"><span></span> <i class="fas fa-check-circle"></i></div>
+                    //  <div class="status-item"><span>قادرة</span> <i class="fas fa-times-circle offline"></i></div>
+
+
+                    // <div class="status-item"><span></span> <i class="fas fa-check-circle"></i></div>
+                    //  <div class="status-item"><span>الوطنية</span><i class="fas fa-times-circle offline"></i></div>
+
+
+                    // <div class="status-item"><span></span> <i class="fas fa-check-circle"></i></div>
+                    // <div class="status-item"><span>سودا</span> <i class="fas fa-times-circle offline"></i></div>
+
+                    ?>
+
                 </div>
             </div>
         </div>
 
-        <!-- Offer Card 2 -->
-        <div class="offer-card">
-            <img src="images/store2.jpg" alt="Store 2">
-            <h3>محل الغاز 2</h3>
-            <div class="contact-info">
-                <p class="phone"><i class="fas fa-phone-alt"></i> 234-567-8901</p>
-                <p class="address"><i class="fas fa-map-marker-alt"></i> شارع 456، المدينة</p>
-            </div>
-            <div class="availability">
-                <h4>أنابيب الغاز المتوفرة:</h4>
-                <div class="availability-status">
-                    <div class="status-item"><span>توتال</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>اجب</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>امان</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>ايران</span> <i class="fas fa-check-circle offline"></i></div>
-                    <div class="status-item"><span>النيل</span> <i class="fas fa-times-circle offline"></i></div>
-                    <div class="status-item"><span>قادرة</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>الوطنية</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>سودا</span> <i class="fas fa-check-circle"></i></div>
-                </div>
-            </div>
-        </div>
+    
 
-        <!-- Offer Card 3 -->
-        <div class="offer-card">
-            <img src="images/store3.jpg" alt="Store 3">
-            <h3>محل الغاز 3</h3>
-            <div class="contact-info">
-                <p class="phone"><i class="fas fa-phone-alt"></i> 345-678-9012</p>
-                <p class="address"><i class="fas fa-map-marker-alt"></i> شارع 789، المدينة</p>
-            </div>
-            <div class="availability">
-                <h4>أنابيب الغاز المتوفرة:</h4>
-                <div class="availability-status">
-                    <div class="status-item"><span>توتال</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>اجب</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>امان</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>ايران</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>النيل</span> <i class="fas fa-times-circle offline"></i></div>
-                    <div class="status-item"><span>قادرة</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>الوطنية</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>سودا</span> <i class="fas fa-check-circle"></i></div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Offer Card 4 -->
-        <div class="offer-card">
-            <img src="images/store4.jpg" alt="Store 4">
-            <h3>محل الغاز 4</h3>
-            <div class="contact-info">
-                <p class="phone"><i class="fas fa-phone-alt"></i> 456-789-0123</p>
-                <p class="address"><i class="fas fa-map-marker-alt"></i> شارع 012، المدينة</p>
-            </div>
-            <div class="availability">
-                <h4>أنابيب الغاز المتوفرة:</h4>
-                <div class="availability-status">
-                    <div class="status-item"><span>توتال</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>اجب</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>امان</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>ايران</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>النيل</span> <i class="fas fa-times-circle offline"></i></div>
-                    <div class="status-item"><span>قادرة</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>الوطنية</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>سودا</span> <i class="fas fa-check-circle"></i></div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Offer Card 5 -->
-        <div class="offer-card">
-            <img src="images/store5.jpg" alt="Store 5">
-            <h3>محل الغاز 5</h3>
-            <div class="contact-info">
-                <p class="phone"><i class="fas fa-phone-alt"></i> 567-890-1234</p>
-                <p class="address"><i class="fas fa-map-marker-alt"></i> شارع 345، المدينة</p>
-            </div>
-            <div class="availability">
-                <h4>أنابيب الغاز المتوفرة:</h4>
-                <div class="availability-status">
-                    <div class="status-item"><span>توتال</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>اجب</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>امان</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>ايران</span> <i class="fas fa-check-circle offline"></i></div>
-                    <div class="status-item"><span>النيل</span> <i class="fas fa-times-circle offline"></i></div>
-                    <div class="status-item"><span>قادرة</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>الوطنية</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>سودا</span> <i class="fas fa-check-circle"></i></div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Offer Card 6 -->
-        <div class="offer-card">
-            <img src="images/store6.jpg" alt="Store 6">
-            <h3>محل الغاز 6</h3>
-            <div class="contact-info">
-                <p class="phone"><i class="fas fa-phone-alt"></i> 678-901-2345</p>
-                <p class="address"><i class="fas fa-map-marker-alt"></i> شارع 678، المدينة</p>
-            </div>
-            <div class="availability">
-                <h4>أنابيب الغاز المتوفرة:</h4>
-                <div class="availability-status">
-                    <div class="status-item"><span>توتال</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>اجب</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>امان</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>ايران</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>النيل</span> <i class="fas fa-times-circle offline"></i></div>
-                    <div class="status-item"><span>قادرة</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>الوطنية</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>سودا</span> <i class="fas fa-check-circle"></i></div>
-                </div>
-            </div>
-        </div>
+  
 
-        <!-- Offer Card 7 -->
-        <div class="offer-card">
-            <img src="images/store7.jpg" alt="Store 7">
-            <h3>محل الغاز 7</h3>
-            <div class="contact-info">
-                <p class="phone"><i class="fas fa-phone-alt"></i> 789-012-3456</p>
-                <p class="address"><i class="fas fa-map-marker-alt"></i> شارع 901، المدينة</p>
-            </div>
-            <div class="availability">
-                <h4>أنابيب الغاز المتوفرة:</h4>
-                <div class="availability-status">
-                    <div class="status-item"><span>توتال</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>اجب</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>امان</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>ايران</span> <i class="fas fa-check-circle offline"></i></div>
-                    <div class="status-item"><span>النيل</span> <i class="fas fa-times-circle offline"></i></div>
-                    <div class="status-item"><span>قادرة</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>الوطنية</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>سودا</span> <i class="fas fa-check-circle"></i></div>
-                </div>
-            </div>
-        </div>
+        <?php 
+        } // end get data while loop
+        ?>
+  </div>
 
-        <!-- Offer Card 8 -->
-        <div class="offer-card">
-            <img src="images/store8.jpg" alt="Store 8">
-            <h3>محل الغاز 8</h3>
-            <div class="contact-info">
-                <p class="phone"><i class="fas fa-phone-alt"></i> 890-123-4567</p>
-                <p class="address"><i class="fas fa-map-marker-alt"></i> شارع 234، المدينة</p>
-            </div>
-            <div class="availability">
-                <h4>أنابيب الغاز المتوفرة:</h4>
-                <div class="availability-status">
-                    <div class="status-item"><span>توتال</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>اجب</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>امان</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>ايران</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>النيل</span> <i class="fas fa-times-circle offline"></i></div>
-                    <div class="status-item"><span>قادرة</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>الوطنية</span> <i class="fas fa-check-circle"></i></div>
-                    <div class="status-item"><span>سودا</span> <i class="fas fa-check-circle"></i></div>
-                </div>
-            </div>
-        </div>
-    </div>
+
 </section>
 
 </div>
