@@ -139,20 +139,13 @@
     </style>
 </head>
 <body>
+ 
+ 
+ <?php 
+ // call the header 
+ include 'header.php';
+ ?>
 
-<header class="main-header">
-    <div class="logo">
-        <img src="images/logo.png" alt="Logo">
-    </div>
-    <nav class="main-nav">
-        <ul>
-            <li><a href="index.html#home">الرئيسية</a></li>
-            <li><a href="index.html#about">عن المشروع</a></li>
-            <li><a href="index.html#services">الخدمات</a></li>
-            <li><a href="index.html#contact">تواصل معنا</a></li>
-        </ul>
-    </nav>
-</header>
 
 <div class="offers-container">
     <div class="search-filter">
@@ -328,29 +321,10 @@
 
 </div>
 
-<!-- Footer Section -->
-<footer class="footer-section">
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-logo">
-               <!--  <img src="images/logo.png" alt="Logo"> -->
-            </div>
-            <div class="footer-links">
-                <a href="index.html#about">عن المشروع</a>
-                <a href="index.html#services">الخدمات</a>
-                <a href="index.html#contact">تواصل معنا</a>
-            </div>
-            <div class="footer-social">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 جميع الحقوق محفوظة.</p>
-        </div>
-    </div>
-</footer>
+<?php
+//include footer
+include 'footer.php';
+?>
 
 <script src="js/bootstrap.bundle.min.js"></script>
 </body>

@@ -1,24 +1,44 @@
 <!DOCTYPE html>
 <html dir="rtl">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>غازك علينا</title>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    
+    <!-- خط عربي جميل من Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap">
+
+    <!-- تنسيق CSS الخاص بالموقع -->
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <!-- Slick Slider CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    
+    <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Amiri', serif; /* استخدام الخط العربي */
+        }
+        a{
+            color: #fff;
+            text-decoration: none;
+        }
+
+    </style>
 </head>
-<style type="text/css">
-    a{
-        text-decoration: none;
-        color: #eee;
-    }
-</style>
 <body>
 
-<?php
-// Include Header
-include 'header.php';
-?>
+<?php include 'header.php'; ?>
 
+<!-- Introduction Section -->
 <div class="intro-container">
     <div class="image-and-text">
         <img src="images/images.jpg" alt="Project Image" class="project-image">
@@ -28,13 +48,36 @@ include 'header.php';
         </div>
     </div>
     <div class="button-container">
-        <button class="btn client-btn">
+        <button class="btn btn-success">
             <a href="login.php"><i class="fas fa-user"></i> الدخول كعميل</a>
         </button>
-        <button class="btn shop-btn">
+        <button class="btn btn-success">
             <a href="gas-login.php"><i class="fas fa-store"></i> الدخول كمحل غاز</a>
         </button>
     </div>
+</div>
+
+<!-- Slider Section -->
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <img src="images/slider1.jpg" alt="Slider Image 1">
+            <div class="caption">الخدمة الأولى</div>
+        </div>
+        <div class="swiper-slide">
+            <img src="images/slider2.jpg" alt="Slider Image 2">
+            <div class="caption">الخدمة الثانية</div>
+        </div>
+        <div class="swiper-slide">
+            <img src="images/slider3.jpg" alt="Slider Image 3">
+            <div class="caption">الخدمة الثالثة</div>
+        </div>
+    </div>
+    <!-- Swiper Pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- Swiper Navigation -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
 </div>
 
 <!-- About Section -->
@@ -78,42 +121,46 @@ include 'header.php';
             <form action="#" method="post">
                 <div class="form-group">
                     <label for="name">الاسم:</label>
-                    <input type="text" id="name" name="name" required>
+                    <input type="text" id="name" name="name" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="email">البريد الإلكتروني:</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="message">رسالتك:</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
+                    <textarea id="message" name="message" class="form-control" rows="4" required></textarea>
                 </div>
-                <button type="submit" class="btn submit-btn">إرسال</button>
+                <button type="submit" class="btn btn-custom">إرسال</button>
             </form>
         </div>
     </div>
 </section>
 
-<!-- Footer Section -->
-<footer class="footer-section">
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="#about">عن المشروع</a>
-                <a href="#services">الخدمات</a>
-                <a href="#contact">تواصل معنا</a>
-            </div>
-            <div class="footer-social">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 جميع الحقوق محفوظة.</p>
-        </div>
-    </div>
-</footer>
+<?php
+//include footer
+include 'footer.php';
+?>
 
+<!-- Bootstrap and Swiper JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+<!-- Swiper Initialization -->
+<script>
+    const swiper = new Swiper('.swiper-container', {
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+</script>
 </body>
 </html>

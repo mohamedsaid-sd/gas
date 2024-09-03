@@ -5,6 +5,8 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+      <!-- خط عربي جميل من Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap">
     <style>
         /* Login Page Styles */
         body {
@@ -71,36 +73,17 @@ include 'config.php';
             </div>
             <button type="submit" class="btn" name="login">تسجيل الدخول</button>
             <div class="links">
-                <a href="offers.php">إنشاء حساب جديد</a> |
-                <a href="registration.php">نسيت كلمة المرور؟</a>
+                <a href="registration.php">إنشاء حساب جديد</a> 
+               <!--  | <a href="registration.php">نسيت كلمة المرور؟</a> -->
             </div>
         </form>
     </div>
 </div>
 
-<!-- Footer Section -->
-<footer class="footer-section">
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-logo">
-               <!--  <img src="images/logo.png" alt="Logo"> -->
-            </div>
-            <div class="footer-links">
-                <a href="index.html#about">عن المشروع</a>
-                <a href="index.html#services">الخدمات</a>
-                <a href="index.html#contact">تواصل معنا</a>
-            </div>
-            <div class="footer-social">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 جميع الحقوق محفوظة.</p>
-        </div>
-    </div>
-</footer>
+<?php
+//include footer
+include 'footer.php';
+?>
 
 </body>
 </html>
