@@ -60,7 +60,6 @@ if(isset($_POST['add_shope'])){
 
     $agb   = "0";
 
-
     if (isset($_POST['agb'])) {
     $agb   = "1";
 } 
@@ -175,89 +174,45 @@ $file = $_FILES['file'];
 
     <div class="col-6">
 
-      <!--   <label for="agb">اجب :</label>
-            <select id="agb" name="agb" required>
-                <option value="1">متوفرة</option>
-                <option value="0">غير متوفرة</option>
-            </select> -->
 
 <input name="agb" type="checkbox" value="1" > اجب</input>
 
     </div>
     <div class="col-6">
-<!--             <label for="total">توتال :</label>
-            <select id="total" name="total" required>
-                <option value="1">متوفرة</option>
-                <option value="0">غير متوفرة</option>
-            </select> -->
+
 
             <input name="total" type="checkbox" value="1" > توتال</input>
 
     </div>
     <div class="col-6">
 
-          <!--    <label for="aman">امام :</label>
-            <select id="aman" name="aman" required>
-                <option value="1">متوفرة</option>
-                <option value="0">غير متوفرة</option>
-            </select> -->
-                                    <input name="aman" type="checkbox" value="1" > امام</input>
+            <input name="aman" type="checkbox" value="1" > امام</input>
+
+    </div>
+    <div class="col-6">
+   <input name="alnail" type="checkbox" value="1" > النيل</input>
 
     </div>
     <div class="col-6">
 
-          <!--   <label for="alnail">النيل :</label>
-            <select id="alnail" name="alnail" required>
-                <option value="1">متوفرة</option>
-                <option value="0">غير متوفرة</option>
-            </select> -->
-
-                        <input name="alnail" type="checkbox" value="1" > النيل</input>
-
-    </div>
-    <div class="col-6">
-
-         <!--    <label for="gadra">قادرة :</label>
-            <select id="gadra" name="gadra" required>
-                <option value="1">متوفرة</option>
-                <option value="0">غير متوفرة</option>
-            </select> -->
-
+     
                     <input name="gadra" type="checkbox" value="1" > قادرة</input>
 
     </div>
     <div class="col-6">
-<!-- 
-          <label for="alwdania">الوطنية :</label>
-            <select id="alwdania" name="alwdania" required>
-                <option value="1">متوفرة</option>
-                <option value="0">غير متوفرة</option>
-            </select> -->
-                        <input name="alwdania" type="checkbox" value="1" > الوطنية</input>
+    <input name="alwdania" type="checkbox" value="1" > الوطنية</input>
 
     </div>
     <div class="col-6">
 
-      <!--   <label for="soda">سودة :</label>
-            <select id="soda" name="soda" required>
-                <option value="1">متوفرة</option>
-                <option value="0">غير متوفرة</option>
-            </select> -->
-
-                                    <input name="soda" type="checkbox" value="1" > سودة</input>
+        <input name="soda" type="checkbox" value="1" > سودة</input>
 
     </div>
     <div class="col-6">
-
-     <!--    <label for="iran">ايران :</label>
-            <select id="iran" name="iran" required>
-                <option value="1">متوفرة</option>
-                <option value="0">غير متوفرة</option>
-            </select> -->
-
-             <input name="iran" type="checkbox" value="1" > ايران</input>
+  <input name="iran" type="checkbox" value="1" > ايران</input>
 
     </div>
+
 </div>
 
             <button type="submit" name="add_shope" >تسجيل</button>

@@ -119,6 +119,100 @@
 <?php
 // Include Header
 include 'header.php';
+
+include 'config.php';
+
+
+if(isset($_POST['add_shope'])){
+
+
+ 
+
+
+    $shop_name    = $_POST['shop_name'];
+    $phone  = $_POST['phone'];
+    $location = $_POST['location'];
+    $address   = $_POST['address'];
+
+    $password   = $_POST['password'];
+
+    $agb   = "0";
+
+
+    if (isset($_POST['agb'])) {
+    $agb   = "1";
+} 
+
+   $total   = "0";
+
+
+    if (isset($_POST['total'])) {
+    $total   = "1";
+} 
+
+     $aman   = "0";
+
+
+    if (isset($_POST['aman'])) {
+    $aman   = "1";
+} 
+  $alnail   = "0";
+
+    if (isset($_POST['alnail'])) {
+    $alnail   = "1";
+}
+
+  $gadra   = "0";
+    if (isset($_POST['gadra'])) {
+    $gadra   = "1";
+}
+      $alwdania   = "0";
+    if (isset($_POST['alwdania'])) {
+    $alwdania   = "1";
+}
+      $soda   = "0";
+    if (isset($_POST['soda'])) {
+    $soda   = "1";
+}
+
+  $iran   = "0";
+    if (isset($_POST['iran'])) {
+    $iran   = "1";
+}
+
+
+ 
+
+$duplicate=mysqli_query($con,"select * from shops where shop_name='$shop_name'");
+
+if (mysqli_num_rows($duplicate)>0)
+{
+        echo "<div id='alert_good'>هذا المحل موجود</div>";
+}else{
+
+
+$file = $_FILES['file'];
+    $file_tmp = $_FILES['file']['tmp_name'];
+    $file_name = $_FILES['file']['name'];
+    $image_name = "images/". "IMG".date("h.i.s").".jpg";
+
+    $add_shops_query = mysqli_query( $con ," INSERT INTO `shops` (`id`, `shop_name`, `shop_image`, `phone`, `location`, `address`, `password`, `agb`, `total`, `aman`, `alnail`, `gadra`, `alwdania`, `soda`, `iran`) VALUES (NULL, '$shop_name', '$image_name', '$phone',  '$location', '$address', '$password', '$agb', '$total', '$aman', '$alnail', '$gadra', '$alwdania', '$soda', '$iran'); ");
+ 
+    move_uploaded_file($file_tmp, $image_name );
+
+
+
+
+
+
+        if($add_shops_query){
+        echo "<div id='alert_good'>تم اضافه المحل بنجاح</div>";
+        }else{
+        echo "خطأ في عملية الاضافة";
+        }
+    
+}
+}
 ?>
 
 <div class="dashboard-container">
@@ -258,23 +352,101 @@ while ($shop_row = mysqli_fetch_array($shops_result)) {
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal()">&times;</span>
             <h3>إضافة محل غاز جديد</h3>
-            <form action="#" method="post">
+            <form action="dashboard.php" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label for="shopName">اسم المحل:</label>
-                    <input type="text" id="shopName" name="shopName" required>
+                    <label for="shop_name">اسم المحل:</label>
+                    <input type="text" id="shop_name" name="shop_name" required>
                 </div>
+
+
+                <div class="form-group">
+                           <label for="shop_image">صورة المحل:</label>
+                        <input type="file" id="file" name="file" accept="image/*" required>
+                </div>
+
+               <div class="form-group">
+                    <label for="shopPhone">الهاتف:</label>
+                    <input type="text" id="phone" name="phone" required>
+                </div>
+
+
+                  <div class="form-group">
+                          
+                  <label for="location">المنطقه :</label>
+               <select id="location" name="location" required>
+                  <option value="الخرطوم">الخرطوم</option>
+                 <option value="بحري">بحري</option>
+                 <option value="امدرمان">امدرمان</option>
+                </select>
+
+                </div>
+
+
                 <div class="form-group">
                     <label for="shopAddress">العنوان:</label>
-                    <input type="text" id="shopAddress" name="shopAddress" required>
+                    <input type="text" id="address" name="address" required>
                 </div>
+
+
                 <div class="form-group">
-                    <label for="shopPhone">الهاتف:</label>
-                    <input type="text" id="shopPhone" name="shopPhone" required>
+                       <label for="password">كلمة المرور:</label>
+            <input type="password" id="password" name="password" required>
                 </div>
-                <button type="submit" class="btn btn-primary">إضافة</button>
+
+                 <div class="row">
+
+
+
+       <div class="col-6">
+
+
+          <input name="agb" type="checkbox" value="1" > اجب</input>
+
+    </div>
+
+    <div class="col-6">
+
+
+            <input name="total" type="checkbox" value="1" > توتال</input>
+
+    </div>
+    <div class="col-6">
+
+            <input name="aman" type="checkbox" value="1" > امام</input>
+
+    </div>
+    <div class="col-6">
+   <input name="alnail" type="checkbox" value="1" > النيل</input>
+
+    </div>
+    <div class="col-6">
+
+     
+                    <input name="gadra" type="checkbox" value="1" > قادرة</input>
+
+    </div>
+    <div class="col-6">
+    <input name="alwdania" type="checkbox" value="1" > الوطنية</input>
+
+    </div>
+    <div class="col-6">
+
+        <input name="soda" type="checkbox" value="1" > سودة</input>
+
+    </div>
+    <div class="col-6">
+  <input name="iran" type="checkbox" value="1" > ايران</input>
+
+    </div>
+    
+</div>
+              
+                <button type="submit" class="btn btn-primary" name="add_shope">إضافة</button>
             </form>
         </div>
     </div>
+
+
 </div>
 
 <!-- Footer Section -->
