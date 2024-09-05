@@ -110,7 +110,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="password" id="password" name="password" required>
             </div>
             <button type="submit" class="btn">تسجيل الدخول</button>
+
+
         </form>
+           <a href="index.php">
+
+        <button type="submit" class="btn">الموقع</button></a>
     </div>
 </div>
 

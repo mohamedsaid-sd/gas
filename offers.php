@@ -169,7 +169,7 @@ include 'header.php';
 
     <div class="offers-grid">
         <?php 
-        include 'config.php';
+$con = mysqli_connect("localhost" , "root" , "" , "gas")or die("Erorr in Connection");
 
         // Filter based on location or search
         if(isset($_GET['f'])){
@@ -208,8 +208,8 @@ include 'header.php';
                     while ($rowgas = mysqli_fetch_array($select_gas_tube_query)) {
                         $gas_types = ['agb' => 'اجب', 'total' => 'توتال', 'aman' => 'امان', 'alnil' => 'النيل', 'gadra' => 'قادرة', 'alwdania' => 'الوطنية', 'soda' => 'سودا', 'iran' => 'ايران'];
                         foreach ($gas_types as $key => $label) {
-                            $status_class = $rowgas[$key] == "1" ? "online" : "offline";
-                            echo "<div class='status-item'><span>$label</span><i class='fas fa-check-circle $status_class'></i></div>";
+                            $status_class = $rowgas[$key] == "1" ? "fa-check-circle online" : "fa-times-circle offline";
+                            echo "<div class='status-item'><span>$label</span><i class='fas $status_class'></i></div>";
                         }
                     }
                     ?>
