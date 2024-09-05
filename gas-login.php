@@ -14,69 +14,129 @@
             background-color: #f4f4f4;
         }
 
- 
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+
+        .login-form {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .login-form h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            text-align: center;
+            color: #333;
+        }
+
+        .login-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .login-form .btn {
+            width: 100%;
+            background-color: #28a745; /* لون الزر أخضر */
+            color: #fff;
+            border: none;
+            padding: 10px;
+        }
+
+        .login-form .btn:hover {
+            background-color: #218838;
+        }
+
+        .login-form .links {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .login-form .links a {
+            color: #28a745;
+            text-decoration: none;
+        }
+
+        .footer-section {
+            background-color: #343a40;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-links a {
+            color: #fff;
+            margin-right: 15px;
+            text-decoration: none;
+        }
+
+        .footer-social a {
+            color: #fff;
+            margin-right: 10px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
 
 <?php
+session_start();
 // Include Header
 include 'header.php';
 include 'config.php';
 
+if (isset($_POST['login'])) {
+    $phone = mysqli_real_escape_string($con, $_POST['phone']);
+    $password = mysqli_real_escape_string($con, $_POST['password']);
 
- if(isset($_POST['login'])){
-        $phone = $_POST['phone'];
-        $password = $_POST['password'];
+    $query = mysqli_query($con, "SELECT * FROM `shops` WHERE phone='$phone'");
+    $row = mysqli_fetch_array($query);
 
-        $flag = false;
-        $query = mysqli_query($con, "SELECT * FROM `shops`");
-        while ($row = mysqli_fetch_array($query)) {
-            if($phone == $row['phone'] && $password == $row['password']){
-                $flag = true;
-
-                            $_SESSION['id'] = $row['id'] ;
-
-              
-            }
-        }
-
-                                $redirectUrl = "gas-detailes.php";
-
-
-        if($flag){
-           
-
-                echo "<div class='alert alert-success'>تم تسجيل الدخول بنجاح... ";
-                echo "<meta http-equiv='refresh' content='3;url={$redirectUrl}'>";
-            }
-         else {
-            echo "<div class='alert alert-danger'>خطأ في بيانات الدخول.</div>";
-        }
+    if ($row && $password == $row['password']) { // يجب استخدام التحقق من كلمة المرور المشفرة إذا كانت كذلك
+        $_SESSION['id'] = $row['id'];
+        echo "<div class='alert alert-success'>تم تسجيل الدخول بنجاح...</div>";
+        header("refresh:3;url=gas-detailes.php");
+        exit();
+    } else {
+        echo "<div class='alert alert-danger'>خطأ في بيانات الدخول.</div>";
     }
-    
+}
 ?>
 
 <div class="login-container">
     <div class="image-container">
-        <img src="images/download.jpg" alt="Client Image">
+        <img src="images/download.jpg" alt="Client Image"> <!-- إعادة الصورة -->
     </div>
     <div class="login-form">
         <h2>تسجيل الدخول كمحل غاز</h2>
         <form action="gas-login.php" method="post">
             <div class="form-group">
-                <label for="username">رقم الهاتف:</label>
-                <input type="text" id="phone" name="phone" required>
+                <label for="phone">رقم الهاتف:</label>
+                <input type="text" id="phone" name="phone" class="form-control" required>
             </div>
             <div class="form-group">
                 <label for="password">كلمة المرور:</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="password" class="form-control" required>
             </div>
-            <button type="submit" class="btn" name="login">تسجيل الدخول</button>
+            <button type="submit" class="btn btn-success" name="login">تسجيل الدخول</button> <!-- زر باللون الأخضر -->
             <div class="links">
-                <a href="gas-registration.php">إنشاء حساب جديد</a> 
-        <!--         | 
-                <a href="gas-detailes.php">نسيت كلمة المرور؟</a> -->
+                <a href="gas-registration.php">إنشاء حساب جديد</a>
             </div>
         </form>
     </div>
@@ -86,9 +146,6 @@ include 'config.php';
 <footer class="footer-section">
     <div class="container">
         <div class="footer-content">
-            <div class="footer-logo">
-               <!--  <img src="images/logo.png" alt="Logo"> -->
-            </div>
             <div class="footer-links">
                 <a href="index.html#about">عن المشروع</a>
                 <a href="index.html#services">الخدمات</a>
