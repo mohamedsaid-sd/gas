@@ -322,7 +322,7 @@ if (isset($_POST['add_shope'])) {
     </div>
     <div class="col-6">
 
-            <input name="aman" type="checkbox" value="1" > امام</input>
+            <input name="aman" type="checkbox" value="1" > امان</input>
 
     </div>
     <div class="col-6">
