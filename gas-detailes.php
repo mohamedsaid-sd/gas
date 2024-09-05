@@ -384,10 +384,10 @@ if(isset($_POST['editgas'])){
 
 
 
-             if ($row['soda'] == "1") {
+             if ($rowgas['soda'] == "1") {
              echo"<input class='check' name='soda'type='checkbox' value='1' checked > سودة</input>";
             } else {
-             echo"<inpu class='check't name='soda'type='checkbox' value='0'  > سودة</input>";
+             echo"<input class='check' name='soda'type='checkbox' value='0'  > سودة</input>";
             }
 
 

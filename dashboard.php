@@ -131,7 +131,7 @@
 // Include Header
 include 'header.php';
 
-include 'config.php';
+$con = mysqli_connect("localhost" , "root" , "" , "gas")or die("Erorr in Connection");
 
 
 if(isset($_POST['add_shope'])){
@@ -270,7 +270,7 @@ $con->close();
             <p>
 <?php
 // call the connection file 
-include 'config.php';
+$con = mysqli_connect("localhost" , "root" , "" , "gas")or die("Erorr in Connection");
 // جلب عدد العملاء
 $sql2 = "SELECT  COUNT(*) as 'shops_count' FROM shops ";
 $result2 = $con->query($sql2);
@@ -305,7 +305,7 @@ $con->close();
                 <tbody>
 <?php
 // include the connection fiel
-include 'config.php';
+$con = mysqli_connect("localhost" , "root" , "" , "gas")or die("Erorr in Connection");
 
 $select_customers = "SELECT * FROM `customers` LIMIT 5";
 $customers_result = mysqli_query($con , $select_customers);
@@ -339,7 +339,7 @@ while ($customer_row = mysqli_fetch_array($customers_result)) {
                 <tbody>
 <?php
 // include the connection fiel
-include 'config.php';
+$con = mysqli_connect("localhost" , "root" , "" , "gas")or die("Erorr in Connection");
 
 $select_shops = "SELECT * FROM `shops` LIMIT 5";
 $shops_result = mysqli_query($con , $select_shops);
