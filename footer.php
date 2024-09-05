@@ -3,7 +3,7 @@
     <div class="container">
         <div class="footer-content">
             <div class="footer-logo">
-               <!--  <img src="images/logo.png" alt="Logo"> -->
+                <img  style="width: 100px;" src="images/logo.png" alt="Logo">
             </div>
             <div class="footer-links">
                 <a href="index.html#about">عن المشروع</a>

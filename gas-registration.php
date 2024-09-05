@@ -131,9 +131,9 @@ $file = $_FILES['file'];
 
 
 
-        echo "<div id='alert_good'>تم اضافه المحل بنجاح</div>";
+        echo "<div class='alert alert-success'>تم اضافه المحل بنجاح</div>";
         }else{
-        echo "خطأ في عملية الاضافة";
+        echo "<div class='alert alert-danger'>خطأ في عملية الاضافة</div>";
         }
 
 

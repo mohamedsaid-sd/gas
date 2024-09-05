@@ -48,7 +48,7 @@ if (mysqli_num_rows($duplicate)>0)
 
 
         if($add_customer_query){
-        echo "<div id='alert_good'>تمت اضافه المستخدم بنجاح</div>";
+        echo "<div class='alert alert-success'> تم تسجيل الحساب بنجاح </div>";
         }else{
         echo "خطأ في عملية الاضافة";
         }

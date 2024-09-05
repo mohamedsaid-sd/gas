@@ -157,7 +157,7 @@ body {
 
 .service-item i {
     font-size: 40px;
-    color: #4CAF50; /* لون الشعار */
+    color: red; /* لون الشعار */
     margin-bottom: 15px;
 }
 
@@ -420,7 +420,7 @@ body {
         }
 
 
-        
+
         .intro-container {
             text-align: center;
             padding: 20px;
@@ -544,4 +544,7 @@ body {
         a {
             color: #fff;
             text-decoration: none;
+        }
+        a:hover{
+            color: #fff;
         }

@@ -108,6 +108,17 @@
             width: 50%;
         }
 
+        .modal-content .form-group{
+            padding: 0px;
+            margin: 0px;
+    
+        }
+
+        .modal-content input[type=text]{
+            font-size: 15px;
+        }
+
+
         .close-modal {
             float: right;
             cursor: pointer;
@@ -359,16 +370,28 @@ while ($shop_row = mysqli_fetch_array($shops_result)) {
             <span class="close-modal" onclick="closeModal()">&times;</span>
             <h3>إضافة محل غاز جديد</h3>
             <form action="dashboard.php" method="POST" enctype="multipart/form-data">
-                <div class="form-group">
+
+                <div class="row">
+
+                    <div class="col-lg-6">
+                    <div class="form-group">
                     <label for="shop_name">اسم المحل:</label>
                     <input type="text" id="shop_name" name="shop_name" required>
+                    </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                    <div class="form-group">
+                    <label for="shop_image">صورة المحل:</label>
+                    <input type="file" id="file" name="file" accept="image/*" required>
+                    </div>
+                    </div>
+                    
                 </div>
 
+          
 
-                <div class="form-group">
-                           <label for="shop_image">صورة المحل:</label>
-                        <input type="file" id="file" name="file" accept="image/*" required>
-                </div>
+               
 
                <div class="form-group">
                     <label for="shopPhone">الهاتف:</label>
@@ -379,7 +402,7 @@ while ($shop_row = mysqli_fetch_array($shops_result)) {
                   <div class="form-group">
                           
                   <label for="location">المنطقه :</label>
-               <select id="location" name="location" required>
+               <select class="form-control" id="location" name="location" required>
                   <option value="الخرطوم">الخرطوم</option>
                  <option value="بحري">بحري</option>
                  <option value="امدرمان">امدرمان</option>

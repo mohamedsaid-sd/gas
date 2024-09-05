@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>غازك علينا</title>
-    
+
     <!-- خط عربي جميل من Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap">
 
@@ -13,13 +13,13 @@
     <!-- Slick Slider CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-    
+
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
-    
+
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -30,6 +30,9 @@
         a{
             color: #fff;
             text-decoration: none;
+        }
+        .service-item .fas{
+            color: #4CAF50;
         }
 
     </style>
@@ -57,8 +60,7 @@
     </div>
 </div>
 
-<!-- Slider Section -->
-<div class="swiper-container">
+<!-- <div class="swiper-container">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
             <img src="images/slider1.jpg" alt="Slider Image 1">
@@ -73,12 +75,10 @@
             <div class="caption">الخدمة الثالثة</div>
         </div>
     </div>
-    <!-- Swiper Pagination -->
     <div class="swiper-pagination"></div>
-    <!-- Swiper Navigation -->
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
-</div>
+</div> -->
 
 <!-- About Section -->
 <section id="about" class="about-section">
@@ -131,7 +131,7 @@
                     <label for="message">رسالتك:</label>
                     <textarea id="message" name="message" class="form-control" rows="4" required></textarea>
                 </div>
-                <button type="submit" class="btn btn-custom">إرسال</button>
+                <button type="submit" class="btn btn-success">إرسال</button>
             </form>
         </div>
     </div>

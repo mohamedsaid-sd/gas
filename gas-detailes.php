@@ -1,6 +1,6 @@
 
 <?php 
-session_start();
+// session_start();
 include 'header.php';
 include 'config.php';
 
@@ -27,12 +27,12 @@ if (mysqli_num_rows($duplicate)>0)
 {
 
             $edit_medical_query=mysqli_query($con,"UPDATE `shops` SET `password` = '$newpassword' WHERE `id` = $id;");
-                    echo "<div id='alert_good'> تم تغيير كلمه السر بنجاح</div>";
+                    echo "<div class='alert alert-success'> تم تغيير كلمه السر بنجاح</div>";
 
 
 }else{
 
-        echo "<div id='alert_good'>كلمه السر غير صحيحة</div>";
+        echo "<div class='alert alert-danger'>كلمه السر غير صحيحة</div>";
 }
 
 }
@@ -54,7 +54,7 @@ if(isset($_POST['editdata'])){
 
 
             $edit_medical_query=mysqli_query($con,"UPDATE `shops` SET `shop_name` = '$shop_name',`phone` = '$phone',`address` = '$address' WHERE `id` = $id;");
-                    echo "<div id='alert_good'> تم بنجاح</div>";
+                    echo "<div class='alert alert-success'> تم تعديل بيانات المحل بنجاح</div>";
 
 
 
@@ -109,7 +109,7 @@ if(isset($_POST['editgas'])){
 }
 
    $edit_medical_query=mysqli_query($con,"UPDATE `gas_tube` SET `agb` = '$agb',`total` = '$total',`aman` = '$aman',`alnil` = '$alnail',`gadra` = '$gadra' ,`alwdania` = '$alwdania',`soda` = '$soda',`iran` = '$iran' WHERE `shop_id` = $id;");
-                    echo "<div id='alert_good'> تم بنجاح</div>";
+                    echo "<div class='alert alert-success'> تم تحديث البيانات </div>";
 
 
 
@@ -279,6 +279,11 @@ if(isset($_POST['editgas'])){
             float: right;
             cursor: pointer;
         }
+
+        .check{
+            margin: 10px;
+            font-size: 20px;
+        }
     </style>
 </head>
 <body>
@@ -309,6 +314,7 @@ if(isset($_POST['editgas'])){
          <p><?php echo $row['password']; ?></p>
         <center>
             <button onclick="openModal()"><i class="fas fa-edit"></i> تعديل البيانات</button>
+            <a href="gas-login.php"><button style="margin: 5px;background-color: red;"> تسجيل خروج </button></a>
         </center>
     </div>
 
@@ -328,68 +334,68 @@ if(isset($_POST['editgas'])){
 
         
             if ($rowgas['agb'] == "1") {
-             echo"<input name='agb'type='checkbox' value='1' checked > اجب</input>";
+             echo"<input class='check' name='agb'type='checkbox' value='1' checked > اجب</input>";
             } else {
-             echo"<input name='agb'type='checkbox' value='0'  > اجب</input>";
+             echo"<input class='check' name='agb'type='checkbox' value='0'  > اجب</input>";
             }
 
 
 
 
              if ($rowgas['total'] == "1") {
-             echo"<input name='total'type='checkbox' value='1' checked > توتال</input>";
+             echo"<input class='check' name='total'type='checkbox' value='1' checked > توتال</input>";
             } else {
-             echo"<input name='total'type='checkbox' value='0'  > توتال</input>";
+             echo"<input class='check' name='total'type='checkbox' value='0'  > توتال</input>";
             }
 
 
 
 
              if ($rowgas['aman'] == "1") {
-             echo"<input name='aman'type='checkbox' value='1' checked > امام</input>";
+             echo"<input class='check' name='aman'type='checkbox' value='1' checked > امام</input>";
             } else {
-             echo"<input name='aman'type='checkbox' value='0'  > امام</input>";
+             echo"<input class='check' name='aman'type='checkbox' value='0'  > امام</input>";
             }
 
 
 
              if ($rowgas['alnil'] == "1") {
-             echo"<input name='alnail'type='checkbox' value='1' checked > النيل</input>";
+             echo"<input class='check' name='alnail'type='checkbox' value='1' checked > النيل</input>";
             } else {
-             echo"<input name='alnail'type='checkbox' value='0'  > النيل</input>";
+             echo"<input class='check' name='alnail'type='checkbox' value='0'  > النيل</input>";
             }
 
 
 
              if ($rowgas['gadra'] == "1") {
-             echo"<input name='gadra'type='checkbox' value='1' checked > قادرة</input>";
+             echo"<input class='check' name='gadra'type='checkbox' value='1' checked > قادرة</input>";
             } else {
-             echo"<input name='gadra'type='checkbox' value='0'  > قادرة</input>";
+             echo"<input class='check' name='gadra'type='checkbox' value='0'  > قادرة</input>";
             }
 
 
 
              if ($rowgas['alwdania'] == "1") {
-             echo"<input name='alwdania'type='checkbox' value='1' checked > الوطنية</input>";
+             echo"<input class='check' name='alwdania'type='checkbox' value='1' checked > الوطنية</input>";
             } else {
-             echo"<input name='alwdania'type='checkbox' value='0'  > الوطنية</input>";
+             echo"<input class='check' name='alwdania'type='checkbox' value='0'  > الوطنية</input>";
             }
 
 
 
 
              if ($row['soda'] == "1") {
-             echo"<input name='soda'type='checkbox' value='1' checked > سودة</input>";
+             echo"<input class='check' name='soda'type='checkbox' value='1' checked > سودة</input>";
             } else {
-             echo"<input name='soda'type='checkbox' value='0'  > سودة</input>";
+             echo"<inpu class='check't name='soda'type='checkbox' value='0'  > سودة</input>";
             }
 
 
 
              if ($rowgas['iran'] == "1") {
-             echo"<input name='iran'type='checkbox' value='1' checked > ايران</input>";
+             echo"<input class='check' name='iran'type='checkbox' value='1' checked > ايران</input>";
             } else {
-             echo"<input name='iran'type='checkbox' value='0'  > ايران</input>";
+             echo"<input class='check' name='iran'type='checkbox' value='0'  > ايران</input>";
             }
 
 

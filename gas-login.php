@@ -74,8 +74,9 @@ include 'config.php';
             </div>
             <button type="submit" class="btn" name="login">تسجيل الدخول</button>
             <div class="links">
-                <a href="gas-registration.php">إنشاء حساب جديد</a> | 
-                <a href="gas-detailes.php">نسيت كلمة المرور؟</a>
+                <a href="gas-registration.php">إنشاء حساب جديد</a> 
+        <!--         | 
+                <a href="gas-detailes.php">نسيت كلمة المرور؟</a> -->
             </div>
         </form>
     </div>

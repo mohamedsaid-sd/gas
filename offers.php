@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html dir="rtl">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>عروض أنابيب الغاز - غازك علينا</title>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* Offers Page Styles */
@@ -17,21 +19,21 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
+            gap: 10px;
         }
 
         .search-filter input[type="text"] {
-            width: 70%;
+            flex-grow: 1;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
             font-size: 16px;
+            width: 90%;
         }
 
-        .search-filter select {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
+        .search-filter button {
+            padding: 10px 20px;
+            margin-left: 10px;
         }
 
         .offers-grid {
@@ -57,6 +59,7 @@
             width: 100%;
             height: 150px;
             border-radius: 8px;
+            object-fit: cover;
         }
 
         .offer-card h3 {
@@ -65,21 +68,17 @@
             color: #333;
         }
 
-        .offer-card .contact-info {
-            margin: 10px 0;
+        .contact-info p {
+            margin: 5px 0;
             font-size: 14px;
         }
 
-        .offer-card .contact-info .phone {
+        .contact-info .phone {
             font-weight: bold;
         }
 
-        .offer-card .availability {
+        .availability {
             margin-top: 10px;
-        }
-
-        .offer-card .availability h4 {
-            margin-bottom: 5px;
         }
 
         .availability-status {
@@ -88,27 +87,30 @@
             gap: 10px;
         }
 
-        .availability-status .status-item {
-            width: calc(50% - 10px);
+        .status-item {
             display: flex;
             align-items: center;
             padding: 5px;
             border: 1px solid #ddd;
             border-radius: 4px;
             background-color: #fafafa;
+            width: 45%;
         }
 
-        .availability-status .status-item span {
-            flex: 1;
+        .status-item span {
+            flex-grow: 1;
         }
 
-        .availability-status .status-item i {
+        .status-item i {
             margin-left: 5px;
-            color: #4CAF50; /* لون الشعار */
         }
 
-        .availability-status .status-item.offline i {
-            color: #f44336; /* لون أحمر */
+        .status-item i.online {
+            color: #4CAF50; /* لون متاح */
+        }
+
+        .status-item i.offline {
+            color: #f44336; /* لون غير متاح */
         }
 
         @keyframes fadeIn {
@@ -128,207 +130,105 @@
             }
         }
 
-        .status-item i {
-    color: green; /* لون الأيقونات المتوفرة */
-}
+        a {
+            color: #345;
+            text-decoration: underline;
+        }
 
-.status-item i.offline {
-    color: red; /* لون الأيقونات غير المتوفرة */
-}
+        a:hover {
+            color: #890;
+        }
 
+        .not_found {
+            text-align: center;
+            color: #a12;
+            font-size: 25px;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
- 
- 
- <?php 
- // call the header 
- include 'header.php';
- ?>
 
+<?php 
+// Include the header
+include 'header.php';
+?>
 
 <div class="offers-container">
     <div class="search-filter">
-
-        <input type="text" placeholder="ابحث عن المحلات...">
-       <button type="submit" name="search" >بحث</button>
-
-        <select>
-            <option value="">كل المناطق</option>
-            <option value="area1"> الخرطوم </option>
-            <option value="area2"> بحري </option>
-            <option value="area3"> امدرمان </option>
-        </select>
+        <form method="post" action="offers.php" style="flex-grow: 1;">
+            <input name="search_text" type="text" placeholder="ابحث عن المحلات...">
+            <button style="float: left;" class="btn btn-primary" type="submit" name="search">بحث</button>
+        </form>
+        <div>
+            <a href="offers.php?f=1"><i class="fas fa-map-marker-alt"></i> الخرطوم</a> | 
+            <a href="offers.php?f=2"><i class="fas fa-map-marker-alt"></i> بحري</a> |  
+            <a href="offers.php?f=3"><i class="fas fa-map-marker-alt"></i> امدرمان</a>
+        </div>
     </div>
 
+    <div class="offers-grid">
+        <?php 
+        include 'config.php';
 
-   <div class="offers-grid">
-    <?php 
+        // Filter based on location or search
+        if(isset($_GET['f'])){
+            $location = $_GET['f'];
+            if($location == "1") {
+                $select = mysqli_query($con, "SELECT * FROM `shops` WHERE location = 'الخرطوم'");
+            } elseif ($location == "2") {
+                $select = mysqli_query($con, "SELECT * FROM `shops` WHERE location = 'بحري'");
+            } else {
+                $select = mysqli_query($con, "SELECT * FROM `shops` WHERE location = 'امدرمان'");
+            }
+        } elseif(isset($_POST['search'])){
+            $search_text = $_POST['search_text'];
+            $select = mysqli_query($con, "SELECT * FROM `shops` WHERE shop_name LIKE '%$search_text%'");
+        } else {
+            $select = mysqli_query($con, "SELECT * FROM `shops`");
+        }
 
-    include 'config.php';
-
-
-        
-        
-
-
-        
-     
-        
-        // get all  data
-        $select = mysqli_query( $con , "SELECT * FROM `shops`");
-
-        
-        // loop data to get valuse
+        $i = 1;
         while ($row = mysqli_fetch_array($select)) {
-
-
         ?>
-
- 
-
-        <!-- Offer Card 1 -->
         <div class="offer-card">
-            <img src="<?php echo $row['shop_image']; ?>" alt="Store 1">
+            <img src="<?php echo $row['shop_image']; ?>" alt="<?php echo $row['shop_name']; ?>">
             <h3><?php echo $row['shop_name']; ?></h3>
             <div class="contact-info">
-                <p class="phone"><i class="fas fa-phone-alt"></i><?php echo $row['phone']; ?></p>
-                <p class="address"><i class="fas fa-map-marker-alt"></i><?php echo $row['address']; ?></p>
+                <p class="phone"><i class="fas fa-phone-alt"></i> <?php echo $row['phone']; ?></p>
+                <p class="address"><i class="fas fa-map-marker-alt"></i> <?php echo $row['address']; ?></p>
             </div>
-
-
 
             <div class="availability">
                 <h4>أنابيب الغاز المتوفرة:</h4>
                 <div class="availability-status">
-
-                     <?php 
-
-
-//$id =  $$row['id'];
-
-    $select_gas_tube_query = mysqli_query( $con , "SELECT * FROM `gas_tube` WHERE `shop_id` = '6'");
-    while ($rowgas = mysqli_fetch_array($select_gas_tube_query)) {
-
-                   
-                        if($rowgas['agb']=="1"){
-                            echo "  <div class='status-item'><span>اجب</span> <i class='fas fa-check-circle'></i></div>";
-                        }else{
-                            echo "<div class='status-item'><span>اجب</span> <i class='fas fa-times-circle offline'></i></div>";
+                    <?php 
+                    $shop_id = $row['id'];
+                    $select_gas_tube_query = mysqli_query($con, "SELECT * FROM `gas_tube` WHERE `shop_id` = '$shop_id'");
+                    while ($rowgas = mysqli_fetch_array($select_gas_tube_query)) {
+                        $gas_types = ['agb' => 'اجب', 'total' => 'توتال', 'aman' => 'امان', 'alnil' => 'النيل', 'gadra' => 'قادرة', 'alwdania' => 'الوطنية', 'soda' => 'سودا', 'iran' => 'ايران'];
+                        foreach ($gas_types as $key => $label) {
+                            $status_class = $rowgas[$key] == "1" ? "online" : "offline";
+                            echo "<div class='status-item'><span>$label</span><i class='fas fa-check-circle $status_class'></i></div>";
                         }
-
-
-
-                        if($rowgas['total']=="1"){
-                            echo "  <div class='status-item'><span></span>توتال <i class='fas fa-check-circle'></i></div>";
-                        }else{
-                            echo "<div class='status-item'><span>توتال</span> <i class='fas fa-times-circle offline'></i></div>";
-                        }
-
-
-
-                         if($rowgas['aman']=="1"){
-                            echo "  <div class='status-item'><span>امان</span> <i class='fas fa-check-circle'></i></div>";
-                        }else{
-                            echo "<div class='status-item'><span>امان</span> <i class='fas fa-times-circle offline'></i></div>";
-                        }
-
-
-                         if($rowgas['alnil']=="1"){
-                            echo "  <div class='status-item'><span>النيل</span> <i class='fas fa-check-circle'></i></div>";
-                        }else{
-                            echo "<div class='status-item'><span>النيل</span> <i class='fas fa-times-circle offline'></i></div>";
-                        }
-
-
-                             if($rowgas['gadra']=="1"){
-                            echo "  <div class='status-item'><span>قادرة</span> <i class='fas fa-check-circle'></i></div>";
-                        }else{
-                            echo "<div class='status-item'><span>قادرة</span> <i class='fas fa-times-circle offline'></i></div>";
-                        }
-
-
-                             if($rowgas['alwdania']=="1"){
-                            echo "  <div class='status-item'><span>الوطنية</span> <i class='fas fa-check-circle'></i></div>";
-                        }else{
-                            echo "<div class='status-item'><span>الوطنية</span> <i class='fas fa-times-circle offline'></i></div>";
-                        }
-
-
-                            if($rowgas['soda']=="1"){
-                            echo "  <div class='status-item'><span>سودا</span> <i class='fas fa-check-circle'></i></div>";
-                        }else{
-                            echo "<div class='status-item'><span>سودا</span> <i class='fas fa-times-circle offline'></i></div>";
-                        }
-
-
-
-                            if($rowgas['iran']=="1"){
-                            echo "  <div class='status-item'><span>النيل</span> <i class='fas fa-check-circle'></i></div>";
-                        }else{
-                            echo "<div class='status-item'><span>النيل</span> <i class='fas fa-times-circle offline'></i></div>";
-                        }
-
-
-
-
-
-}
-
-
-                    // <div class="status-item"><span></span> <i class="fas fa-check-circle"></i></div>
-                    // <div class="status-item"><span>توتال</span><i class="fas fa-times-circle offline"></i></div>
-
-
-                  
-                  
-
-                    // <div class="status-item"><span></span> <i class="fas fa-check-circle"></i></div>
-                    // <div class="status-item"><span>امان</span> <i class="fas fa-times-circle offline"></i></div>
-
-
-                    // <div class="status-item"><span>ايران</span> <i class="fas fa-check-circle"></i></div>
-                    // <div class="status-item"><span>ايران</span> <i class="fas fa-times-circle offline"></i></div>
-
-                    // <div class="status-item"><span></span> <i class="fas fa-times-circle offline"></i></div>
-                    // <div class="status-item"><span></span><i class="fas fa-times-circle offline"></i></div>
-
-                    // <div class="status-item"><span></span> <i class="fas fa-check-circle"></i></div>
-                    //  <div class="status-item"><span>قادرة</span> <i class="fas fa-times-circle offline"></i></div>
-
-
-                    // <div class="status-item"><span></span> <i class="fas fa-check-circle"></i></div>
-                    //  <div class="status-item"><span>الوطنية</span><i class="fas fa-times-circle offline"></i></div>
-
-
-                    // <div class="status-item"><span></span> <i class="fas fa-check-circle"></i></div>
-                    // <div class="status-item"><span>سودا</span> <i class="fas fa-times-circle offline"></i></div>
-
+                    }
                     ?>
-
                 </div>
             </div>
         </div>
-
-    
-
-
-
-
-  
-
         <?php 
-        } // end get data while loop
+        $i++;
+        } 
+
+        if($i == 1){
+            echo "<div class='not_found'> لا توجد محلات مطابقة </div>";
+        }
         ?>
-  </div>
-
-
-</section>
-
+    </div>
 </div>
 
 <?php
-//include footer
+// Include the footer
 include 'footer.php';
 ?>
 
