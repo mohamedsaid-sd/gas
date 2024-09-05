@@ -20,14 +20,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <!DOCTYPE html>
-<html dir="rtl">
+<html dir="rtl" lang="ar">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تسجيل الدخول - إدارة غازك علينا</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Login Page Styles */
+        /* تنسيقات صفحة تسجيل الدخول */
         body {
             margin: 0;
             padding: 0;
@@ -47,7 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 500px;
+            width: 100%;
+            max-width: 400px;
         }
 
         .login-form h2 {
@@ -82,10 +85,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             margin-top: 10px;
         }
 
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
         .error-message {
             color: red;
             text-align: center;
             margin-bottom: 15px;
+        }
+
+        .login-form img {
+            float: right;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -93,13 +105,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <div class="login-container">
     <div class="login-form">
-        <img src="images/logo.png" width="40" style="float: right;">
-        <h2 style="position: relative;top: 10px;">تسجيل الدخول إدارة غازك علينا</h2>
+        <img src="images/logo.png" width="40" alt="شعار">
+        <h2>تسجيل الدخول - إدارة غازك علينا</h2>
+        
         <?php if (isset($error_message)): ?>
             <div class="error-message">
                 <?php echo $error_message; ?>
             </div>
         <?php endif; ?>
+        
         <form action="" method="post">
             <div class="form-group">
                 <label for="username">اسم المستخدم:</label>
@@ -110,12 +124,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="password" id="password" name="password" required>
             </div>
             <button type="submit" class="btn">تسجيل الدخول</button>
-
-
         </form>
-           <a href="index.php">
-
-        <button type="submit" class="btn">الموقع</button></a>
+        <center>
+        <a style="color:green;text-decoration: underline;" href="index.php">
+             العودة إلى الموقع 
+        </a>
+        </center>
     </div>
 </div>
 

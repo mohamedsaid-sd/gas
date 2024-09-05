@@ -64,39 +64,12 @@
             text-decoration: none;
         }
 
-        .footer-section {
-            background-color: #343a40;
-            color: #fff;
-            padding: 20px 0;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer-links a {
-            color: #fff;
-            margin-right: 15px;
-            text-decoration: none;
-        }
-
-        .footer-social a {
-            color: #fff;
-            margin-right: 10px;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            margin-top: 10px;
-        }
     </style>
 </head>
 <body>
 
 <?php
-session_start();
+@session_start();
 // Include Header
 include 'header.php';
 include 'config.php';
@@ -142,26 +115,7 @@ if (isset($_POST['login'])) {
     </div>
 </div>
 
-<!-- Footer Section -->
-<footer class="footer-section">
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="index.html#about">عن المشروع</a>
-                <a href="index.html#services">الخدمات</a>
-                <a href="index.html#contact">تواصل معنا</a>
-            </div>
-            <div class="footer-social">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 جميع الحقوق محفوظة.</p>
-        </div>
-    </div>
-</footer>
+<?php include 'footer.php'; ?>
 
 </body>
 </html>

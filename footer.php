@@ -2,13 +2,10 @@
 <footer class="footer-section">
     <div class="container">
         <div class="footer-content">
-            <div class="footer-logo">
-                <img  style="width: 100px;" src="images/logo.png" alt="Logo">
-            </div>
             <div class="footer-links">
-                <a href="index.html#about">عن المشروع</a>
-                <a href="index.html#services">الخدمات</a>
-                <a href="index.html#contact">تواصل معنا</a>
+                <a href="index.php?#about">عن المشروع</a>
+                <a href="index.php?#services">الخدمات</a>
+                <a href="index.php?#contact">تواصل معنا</a>
             </div>
             <div class="footer-social">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
