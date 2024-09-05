@@ -196,7 +196,7 @@ $file = $_FILES['file'];
     $file_name = $_FILES['file']['name'];
     $image_name = "images/". "IMG".date("h.i.s").".jpg";
 
-    $add_shops_query = mysqli_query( $con ," INSERT INTO `shops` (`id`, `shop_name`, `shop_image`, `phone`, `location`, `address`, `password`, `agb`, `total`, `aman`, `alnail`, `gadra`, `alwdania`, `soda`, `iran`) VALUES (NULL, '$shop_name', '$image_name', '$phone',  '$location', '$address', '$password', '$agb', '$total', '$aman', '$alnail', '$gadra', '$alwdania', '$soda', '$iran'); ");
+    $add_shops_query = mysqli_query( $con ," INSERT INTO `shops` (`id`, `shop_name`, `shop_image`, `phone`, `location`, `address`, `password`) VALUES (NULL, '$shop_name', '$image_name', '$phone',  '$location', '$address', '$password'); ");
  
     move_uploaded_file($file_tmp, $image_name );
 
@@ -206,6 +206,12 @@ $file = $_FILES['file'];
 
 
         if($add_shops_query){
+
+       $id = mysqli_insert_id($con);
+
+ $add_gas_query = mysqli_query( $con ," INSERT INTO `gas_tube` (`id`, `agb`, `total`, `aman`, `alnil`, `gadra`, `alwdania`, `soda`, `iran`, `shop_id`) VALUES (NULL, '$agb', '$total', '$aman', '$alnail', '$gadra', '$alwdania', '$soda', '$iran','$id'); ");
+
+
         echo "<div id='alert_good'>تم اضافه المحل بنجاح</div>";
         }else{
         echo "خطأ في عملية الاضافة";

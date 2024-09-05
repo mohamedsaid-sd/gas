@@ -108,7 +108,7 @@ if(isset($_POST['editgas'])){
     $iran   = "1";
 }
 
-   $edit_medical_query=mysqli_query($con,"UPDATE `shops` SET `agb` = '$agb',`total` = '$total',`aman` = '$aman',`alnail` = '$alnail',`gadra` = '$gadra' ,`alwdania` = '$alwdania',`soda` = '$soda',`iran` = '$iran' WHERE `id` = $id;");
+   $edit_medical_query=mysqli_query($con,"UPDATE `gas_tube` SET `agb` = '$agb',`total` = '$total',`aman` = '$aman',`alnil` = '$alnail',`gadra` = '$gadra' ,`alwdania` = '$alwdania',`soda` = '$soda',`iran` = '$iran' WHERE `shop_id` = $id;");
                     echo "<div id='alert_good'> تم بنجاح</div>";
 
 
@@ -312,11 +312,22 @@ if(isset($_POST['editgas'])){
         </center>
     </div>
 
+     <?php 
+        } // end get data while loop
+        ?>
+
     <div class="form-section">
         <h3>تحديث حالة الأنابيب</h3>
         <form   action="gas-detailes.php"  method="POST" >
 <?php
-            if ($row['agb'] == "1") {
+
+  $id =  $_SESSION['id'];
+
+    $select_gas_tube_query = mysqli_query( $con , "SELECT * FROM `gas_tube` WHERE `shop_id` = '$id'");
+    while ($rowgas = mysqli_fetch_array($select_gas_tube_query)) {
+
+        
+            if ($rowgas['agb'] == "1") {
              echo"<input name='agb'type='checkbox' value='1' checked > اجب</input>";
             } else {
              echo"<input name='agb'type='checkbox' value='0'  > اجب</input>";
@@ -325,7 +336,7 @@ if(isset($_POST['editgas'])){
 
 
 
-             if ($row['total'] == "1") {
+             if ($rowgas['total'] == "1") {
              echo"<input name='total'type='checkbox' value='1' checked > توتال</input>";
             } else {
              echo"<input name='total'type='checkbox' value='0'  > توتال</input>";
@@ -334,7 +345,7 @@ if(isset($_POST['editgas'])){
 
 
 
-             if ($row['aman'] == "1") {
+             if ($rowgas['aman'] == "1") {
              echo"<input name='aman'type='checkbox' value='1' checked > امام</input>";
             } else {
              echo"<input name='aman'type='checkbox' value='0'  > امام</input>";
@@ -342,7 +353,7 @@ if(isset($_POST['editgas'])){
 
 
 
-             if ($row['alnail'] == "1") {
+             if ($rowgas['alnil'] == "1") {
              echo"<input name='alnail'type='checkbox' value='1' checked > النيل</input>";
             } else {
              echo"<input name='alnail'type='checkbox' value='0'  > النيل</input>";
@@ -350,7 +361,7 @@ if(isset($_POST['editgas'])){
 
 
 
-             if ($row['gadra'] == "1") {
+             if ($rowgas['gadra'] == "1") {
              echo"<input name='gadra'type='checkbox' value='1' checked > قادرة</input>";
             } else {
              echo"<input name='gadra'type='checkbox' value='0'  > قادرة</input>";
@@ -358,7 +369,7 @@ if(isset($_POST['editgas'])){
 
 
 
-             if ($row['alwdania'] == "1") {
+             if ($rowgas['alwdania'] == "1") {
              echo"<input name='alwdania'type='checkbox' value='1' checked > الوطنية</input>";
             } else {
              echo"<input name='alwdania'type='checkbox' value='0'  > الوطنية</input>";
@@ -375,7 +386,7 @@ if(isset($_POST['editgas'])){
 
 
 
-             if ($row['iran'] == "1") {
+             if ($rowgas['iran'] == "1") {
              echo"<input name='iran'type='checkbox' value='1' checked > ايران</input>";
             } else {
              echo"<input name='iran'type='checkbox' value='0'  > ايران</input>";
@@ -383,20 +394,18 @@ if(isset($_POST['editgas'])){
 
 
 
-
+}
 
             ?>
 
-          
+       
 
             </div>
             <button class="btn btn-success" type="submit" name="editgas"><i class="fas fa-save"> </i> حفظ التغييرات </button>
         </form>
     </div>
 
- <?php 
-        } // end get data while loop
-        ?>
+
     <div class="form-section">
         <h3>تغيير كلمة السر</h3>
         <form  action="gas-detailes.php"  method="POST">

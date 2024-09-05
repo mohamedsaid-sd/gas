@@ -204,8 +204,14 @@
 
                      <?php 
 
+
+//$id =  $$row['id'];
+
+    $select_gas_tube_query = mysqli_query( $con , "SELECT * FROM `gas_tube` WHERE `shop_id` = '6'");
+    while ($rowgas = mysqli_fetch_array($select_gas_tube_query)) {
+
                    
-                        if($row['agb']=="1"){
+                        if($rowgas['agb']=="1"){
                             echo "  <div class='status-item'><span>اجب</span> <i class='fas fa-check-circle'></i></div>";
                         }else{
                             echo "<div class='status-item'><span>اجب</span> <i class='fas fa-times-circle offline'></i></div>";
@@ -213,7 +219,7 @@
 
 
 
-                        if($row['total']=="1"){
+                        if($rowgas['total']=="1"){
                             echo "  <div class='status-item'><span></span>توتال <i class='fas fa-check-circle'></i></div>";
                         }else{
                             echo "<div class='status-item'><span>توتال</span> <i class='fas fa-times-circle offline'></i></div>";
@@ -221,35 +227,35 @@
 
 
 
-                         if($row['aman']=="1"){
+                         if($rowgas['aman']=="1"){
                             echo "  <div class='status-item'><span>امان</span> <i class='fas fa-check-circle'></i></div>";
                         }else{
                             echo "<div class='status-item'><span>امان</span> <i class='fas fa-times-circle offline'></i></div>";
                         }
 
 
-                         if($row['alnail']=="1"){
+                         if($rowgas['alnil']=="1"){
                             echo "  <div class='status-item'><span>النيل</span> <i class='fas fa-check-circle'></i></div>";
                         }else{
                             echo "<div class='status-item'><span>النيل</span> <i class='fas fa-times-circle offline'></i></div>";
                         }
 
 
-                             if($row['gadra']=="1"){
+                             if($rowgas['gadra']=="1"){
                             echo "  <div class='status-item'><span>قادرة</span> <i class='fas fa-check-circle'></i></div>";
                         }else{
                             echo "<div class='status-item'><span>قادرة</span> <i class='fas fa-times-circle offline'></i></div>";
                         }
 
 
-                             if($row['alwdania']=="1"){
+                             if($rowgas['alwdania']=="1"){
                             echo "  <div class='status-item'><span>الوطنية</span> <i class='fas fa-check-circle'></i></div>";
                         }else{
                             echo "<div class='status-item'><span>الوطنية</span> <i class='fas fa-times-circle offline'></i></div>";
                         }
 
 
-                            if($row['soda']=="1"){
+                            if($rowgas['soda']=="1"){
                             echo "  <div class='status-item'><span>سودا</span> <i class='fas fa-check-circle'></i></div>";
                         }else{
                             echo "<div class='status-item'><span>سودا</span> <i class='fas fa-times-circle offline'></i></div>";
@@ -257,7 +263,7 @@
 
 
 
-                            if($row['iran']=="1"){
+                            if($rowgas['iran']=="1"){
                             echo "  <div class='status-item'><span>النيل</span> <i class='fas fa-check-circle'></i></div>";
                         }else{
                             echo "<div class='status-item'><span>النيل</span> <i class='fas fa-times-circle offline'></i></div>";
@@ -267,7 +273,7 @@
 
 
 
-
+}
 
 
                     // <div class="status-item"><span></span> <i class="fas fa-check-circle"></i></div>
